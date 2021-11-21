@@ -14,19 +14,31 @@ const connection = mysql.createConnection({
 connection.connect();
 
 //cors setting
-//app.use((req, res, next) => {
-//  res.header("Access-Control-Allow-Origin", "*")
-//  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")//
-//  next()
-// })
+app.use((req, res, next) => {
+ res.header("Access-Control-Allow-Origin", "*")
+ res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")//
+ next()
+})
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
 // Get example
 const router: express.Router = express.Router()
+
 router.get('/api/getTest', (req, res) => {
-  res.send(req.query)
+  connection.query('select * from test', function (err, results, fields) {
+    if (err) throw err
+    res.send(results)
+  });
+})
+
+router.get('/api/get_test_one/:id', (req, res) => {
+  const id = req.params.id;
+  connection.query(`select * from test WHERE id = ${id}`, function (err, results, fields) {
+    if (err) throw err
+    res.send(results)
+  });
 })
 
 //Post example

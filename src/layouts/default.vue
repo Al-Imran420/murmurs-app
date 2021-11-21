@@ -1,15 +1,6 @@
 <template>
-  <div>
-    <header>header</header>
-    <nuxt />
-    <footer>footer</footer>
-  </div>
+    <div>
+        <NuxtLink to="/"> Welcome</NuxtLink>
+        <slot></slot>
+    </div>
 </template>
-
-<script lang="ts">
-export default {
-  data() {
-    return {}
-  },
-}
-</script>

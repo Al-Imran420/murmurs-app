@@ -1,21 +1,11 @@
-<template>
-  <div>
-    <h1>Display the data obtained from API here</h1>
-    {{ data }}
-  </div>
-</template>
-
 <script lang="ts">
-export default {
-  async asyncData({ $axios }): Promise<object> {
-    const res = await $axios.$post('http://localhost:3000/api/postTest')
-    console.log(res)
-    return {
-      data: res,
+    export default{
+        layout: 'default'
     }
-  },
-  data() {
-    return {}
-  },
-}
 </script>
+<script setup lang="ts"></script>
+
+<template>
+    <h1>Hello Index...</h1>
+    <!-- <img src="/image.png" alt="img"> -->
+</template>
