@@ -1,11 +1,21 @@
-<script lang="ts">
-    export default{
-        layout: 'default'
-    }
-</script>
-<script setup lang="ts"></script>
-
 <template>
-    <h1>Hello Index...</h1>
-    <!-- <img src="/image.png" alt="img"> -->
+  <div>
+    <h1>You are not loged in</h1>
+    {{ data }}
+  </div>
 </template>
+
+<script lang="ts">
+export default {
+  async asyncData({ $axios }): Promise<object> {
+    const res = await $axios.$post('http://localhost:3000/api/postTest')
+    console.log(res)
+    return {
+      data: res,
+    }
+  },
+  data() {
+    return {}
+  },
+}
+</script>
