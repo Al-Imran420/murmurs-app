@@ -3,6 +3,7 @@ version: '3'
 services:
   test:
     image: mysql:5.7
+    platform: linux/amd64
     build: ./docker
     environment:
       MYSQL_ROOT_PASSWORD: root
