@@ -108,4 +108,30 @@ $ yarn -v
 1. You access to http://localhost:3000/
 1. It's success if render html.
 
+### Implemented Features
+1. Login & Signup (Cookies validation time time 15 MIN)
+2. Simple Authentication using VueCookies
+3. Post Murmur
+4. Delete Murmur
+5. User profile
+6. Show user profile inside the time line page sidebar
+7. Show post list as thumbnail into user profile page where you liked before
+### Unimplemented Features
+1. Like murmur
+2. Follow user
 
+### Testing this web app
+For testing this web app, you do not need to do anything extra out of the initial app setup guide. Simple follow the steep bellow:
+#### DB
+1. cd db && docker-compose build
+1. docker-compose up -d
+
+#### Server
+1. cd server && npm run ts-node index.ts
+
+#### Client
+1. cd src && yarn dev
+
+### How to confirm to success to build environment
+1. You access to http://localhost:3000/
+1. It's success if render html.
