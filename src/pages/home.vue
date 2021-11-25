@@ -24,7 +24,7 @@
                             <p>{{murmur.text}}</p>
                             <img :src="murmur.url" alt="">
                         </div>
-                        <div class="post_like_comment" v-if="liked[i]">
+                        <div class="post_like_comment">
                             <button @click="addLike(murmur, i)">Like</button>
                         </div>
                     </div>
@@ -68,8 +68,7 @@
           murmur_posts:[],
           follower_list:[],
           url:'',
-          text:'',
-          liked:true
+          text:''
       }
     },
     methods:{
@@ -116,7 +115,6 @@
                     useremail: this.useremail
                 })
             });
-            this.liked[i] =! this.liked[i]
         }
     },
     mounted(){
@@ -212,6 +210,7 @@
         height: auto;
         float: left;
         margin-top: 15px;
+        margin-bottom: 30px;
     }
     .poster_profile{
         width: 100%;
