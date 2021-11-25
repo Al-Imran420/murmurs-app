@@ -7,14 +7,14 @@
                         <h1>murmur</h1>
                     </div>
                     <ul>
-                        <li> <NuxtLink to="/"> No Login </NuxtLink> </li>
+                        <!-- <li> <NuxtLink to="/"> No Login </NuxtLink> </li> -->
                         <li> <NuxtLink to="/home"> Home </NuxtLink> </li>
+                        <li> <NuxtLink to="/profile"> Profil </NuxtLink> </li>
                         <li> <NuxtLink to="/login"> Login </NuxtLink> </li>
                         <li> <NuxtLink to="/signup"> Signup </NuxtLink> </li>
-                        <li> <NuxtLink to="/profile"> Profilr </NuxtLink> </li>
                     </ul>
                     <div class="post_button_sidebar">
-                        <button>Post Murmur</button>
+                        <button @click="signOut">Sign Out</button>
                     </div>
                 </div>
                 <div class="app_outlet">
@@ -25,7 +25,32 @@
     </div>
 </template>
 
-<script lang="ts"></script>
+<script setup lang="ts">
+  import Vue from 'vue'
+  import VueCookies from 'vue-cookies'
+  Vue.use(VueCookies);
+  export default Vue.extend({
+    name: "default",
+    data(){
+      return{
+          isLogedin: false
+      }
+    },
+    methods:{
+        async signOut(){
+            this.$cookies.remove("user");
+            await this.$router.push('/login')
+        }
+    },
+    mounted(){
+      let currentUser = this.$cookies.get("user");
+      if(currentUser != null){
+        this.isLogedin = currentUser.logedin
+        console.log(currentUser)
+      }
+    }
+  })
+</script>
 
 <style>
     *{
@@ -97,7 +122,7 @@
     .app_sidebar ul li a:hover{
         color: #4c4cff !important;
     }
-    .nuxt-link-active{
+    .nuxt-link-exact-active{
         color: #4c4cff !important;
     }
     .post_button_sidebar{
